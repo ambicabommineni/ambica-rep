@@ -1,0 +1,13 @@
+/* using sass*/
+
+.container {
+    margin-top: 10px;
+}
+input {
+    text-align: center;
+}
+.table {
+    @extend .container;
+    height: 50%;
+    overflow: scroll;
+}

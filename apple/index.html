@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>assesment</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js" /></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.scss" type="text/css" />
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css" type="text/css" />
+</head>
+
+<body>
+    <div class="container" ng-app="myApp" ng-controller="myCtrl">
+        <h1>enter the user name</h1>
+        <input id="user" class="form-control" ng-model="username" type="text" placeholder="search with username" /></input>
+        <!--table for user details-->
+        <table class="table table-striped table-bordered" ng-show="username">
+
+            <tr>
+                <th>USER DETAILS</th>
+            </tr>
+            <tr ng-repeat="(key, value) in data">
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+        </table>
+
+        <!--table for user repos-->
+
+        <table ng-repeat="owner in repodata" class="table table-striped table-bordered" ng-show="username">
+            <tr>
+                <th>USER REPOS</th>
+            </tr>
+            <tr ng-repeat="(key, value) in owner">
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+        </table>
+        <p ng-show="username&&nodata" class="col-lg-2 control-label">user data doesnt exsis</P>
+
+    </div>
+
+
+</body>
+
+</html>
