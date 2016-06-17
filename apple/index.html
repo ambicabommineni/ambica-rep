@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-
+<!---
+created by ambica-->
 <html>
+
 
 <head>
     <title>assesment</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js" /></script>
-    <script src="./script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <link rel="stylesheet" href="./style.scss" type="text/css" />
     <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css" type="text/css" />
 </head>
@@ -28,19 +29,23 @@
 
         <!--table for user repos-->
 
-        <table ng-repeat="owner in repodata" class="table table-striped table-bordered" ng-show="username">
+        <table ng-repeat="private in repodata" class="table table-striped table-bordered" ng-show="username">
             <tr>
                 <th>USER REPOS</th>
             </tr>
-            <tr ng-repeat="(key, value) in owner">
+
+            <tr ng-repeat="(key, value) in private">
+
                 <td>{{key}}</td>
                 <td>{{value}}</td>
             </tr>
         </table>
-        <p ng-show="username&&nodata" class="col-lg-2 control-label">user data doesnt exsis</P>
+        <p ng-show="username&&nodata" class='text-danger'><b>data doesnt exsist</b>
+        </P>
 
     </div>
-
+    <script src="./script.js"></script>
+    <script src="./mySvc.js"></script>
 
 </body>
 

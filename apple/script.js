@@ -1,27 +1,27 @@
-var app = angular.module('myApp', []);
+/**
+ * Created by ambica on 6/16/16.
+ */
+var app = angular.module('myApp', ['mySvcModule']);
 
-app.controller('myCtrl', function($scope, $http) {
-     
+app.controller('myCtrl', function($scope, $http, mySvc) {
+
     /*watch event to track the change of input value*/
-    
+
     $scope.$watch('username', function(name) {
         $scope.username = name;
-        $scope.nodata=false;
-        var url1 = "https://api.github.com/users/" + name;
-        var url2 = url1 + "/repos";
-        //get request 
-        $http.get(url1)
-            .then(function(response) {
-                $scope.data = response.data;
-            },function(response){
-                $scope.nodata=true;
-            });
-        $http.get(url2)
-            .then(function(response) {
-                $scope.repodata = response.data;
-            },function(response){
-                $scope.nodata=true;
-            });
+        $scope.nodata = false;
+        //get request
+
+        mySvc.getUsers(name).then(function(response) {
+            $scope.data = response.data;
+        }, function(response) {
+            $scope.nodata = true;
+        });
+        mySvc.getRepo(name).then(function(response) {
+            $scope.repodata = response.data;
+        }, function(response) {
+            $scope.nodata = true;
+        });
 
 
     });
